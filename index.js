@@ -12,7 +12,7 @@ bot.on('ready', () =>{
 
 bot.on('guildMemberAdd', member =>{
      
-    const channel = member.guild.channels.find(channel => channel.name === "willkommen");
+    const channel = member.guild.channels.cache.find(channel => channel.name === "willkommen");
     if(!channel) return;
 
     channel.send(`${member} Willkommen, wie war der Flug?^^`)
