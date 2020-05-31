@@ -10,11 +10,6 @@ bot.on('ready', () =>{
     console.log('FlugBot hebt ab!')
 })
 
-client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(ch => ch.willkommen === 'member-log');
-    if (!channel) return;
-    channel.send(`Willkommen im Server, ${member}`);
-})
 
 bot.on('message', message=>{
 
