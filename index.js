@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 
 const PREFIX  = '#';
 
-var version = '1.0'
+var version = '1.1'
 
 bot.on('ready', () =>{
     console.log('FlugBot hebt ab!')
