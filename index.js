@@ -11,7 +11,7 @@ bot.on('ready', () =>{
 })
 
 bot.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(channel => channel.name === "eingangshalle");
+    const channel = member.guild.channels.find(channel => channel.id === "eingangshalle");
     if (!channel) return;
 
     channel.send(`Willkommen auf dem Server, ${member},bitte lies dir die #regeln druch!`)
