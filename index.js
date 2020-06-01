@@ -12,7 +12,7 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (!message.guild) return;
-    if (!message.member.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("Dafür hast du keine Rechte!")
+    if (!message.member.hasPermission(["KICK_MEMBERS"])) return message.channel.send("Dafür hast du keine Rechte!")
 
     if (message.content.startsWith('#kick')) {
         const user = message.mentions.users.first();
