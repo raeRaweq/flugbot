@@ -13,25 +13,25 @@ bot.on('ready', () =>{
 bot.on('message', message => {
     if (!message.guild) return;
 
-    if (message.content.startsWith('#kick')) {
+    if (message.content.startsWith('!kick')) {
         const user = message.mentions.users.first();
         if (user) {
             const member = message.guild.member(user);
             if (member) {
                 member
-                .kick('Optional reason that will display in the audit logs')
+                .kick('Grund')
                 .then(() => {
-                    message.reply(`Successfully kicked ${user.tag}`);
+                    message.reply(`Erfolgreich ${user.tag} gekickt.`);
                 })
                 .catch(err => {
-                    message.reply('I was unable to kick the member');
+                    message.reply('ich konnte dieses Mitglied nicht kicken');
                     console.error(err);
                 });
             } else {
-                message.reply("That user isn't in this guild!");
+                message.reply("Dieser User ist nicht im!");
             }
         } else {
-            message.reply("You didn't mention the user to kick!");
+            message.reply("du musst die Person erwähnen!");
         }
     }
 });
