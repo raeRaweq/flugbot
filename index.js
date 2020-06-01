@@ -12,7 +12,7 @@ bot.on('ready', () => {
 
 bot.on('message', message => {
     if (!message.guild) return;
-    if (!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("Dafür hast du keine Rechte!")
+    if (!message.member.hasPermission(["KICK_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("Dafür hast du keine Rechte!")
 
     if (message.content.startsWith('#kick')) {
         const user = message.mentions.users.first();
@@ -36,41 +36,6 @@ bot.on('message', message => {
         }
     }
 });
-
-bot.on('message', message => {
-    if (!message.guild) return;
-    if (!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("Dafür hast du keine Rechte!")
-
-    let banMember = message.mentions.members.first() || message.guild.member
-    if (banMember) return message.channel.send("du musst die Person erwähnen!")
-
-    let reason = args.slice(1).join(" ");
-    if (!reason) reason = "Keinen Grund angegeben!"
-
-    if (!message.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("Ich habe nicht die Berechtigung dafür!")
-
-    message.delete()
-
-    banMember.send(`Hallo! Du wurdest von ${message.guild.name} gebannt für : ${reason}`).then(() =>
-        message.guild.ban(banMember, { days: 1, reason: reason })).catch(err => console.log(err))
-
-    message.channel.send(`**${banMember.user.tag}** wurde gebannt!`)
-
-    let embed = new Discord.RichEmbed()
-        .setColor(colours.redlight)
-        .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
-        .addField("Moderation:", "ban")
-        .addField("Mutee:", banMember.user.username)
-        .addField("Moderator:", message.author.username)
-        .addField("Grund:", reason)
-        .addField("ZeitPunkt:", message.createdAt.toLocaleString())
-
-    let sChannel = message.guild.channels.find(c => c.name === "ban-logs")
-    sChannel.send(embed)
-)
-
-
-}
 
 bot.on('message', message => {
 
