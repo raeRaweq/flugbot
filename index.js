@@ -10,6 +10,12 @@ bot.on('ready', () =>{
     console.log('FlugBot hebt ab!')
 })
 
+bot.on('guildMemberAdd', member => {
+    if (!channel) return;
+
+    channel.send(`Willkommen auf dem Server, ${member},bitte lies dir die #regeln druch!`)
+});
+
 
 bot.on('message', message=>{
 
